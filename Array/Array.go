@@ -6,17 +6,36 @@ import (
 
 func main() {
 
-  var arr1 = [3]int{1,2,3}
-  fmt.Println(arr1)
+	loop()
+}
 
-  
-  arr2 := [5]int{4,5,6,7,8}
-  fmt.Println(arr2)
+func array() {
+	var myArr = [5]int{12, 3, 24, 52}
+	fmt.Println(myArr)
 
-  var infinite = [...]int{12, 34,55,53,432,13}
-  fmt.Println(infinite)
+	myArr2 := [...]int{12, 34, 13, 14}
+	fmt.Println(myArr2)
+	fmt.Println(len(myArr2))
+	myArr2[2] = 14
+	fmt.Println(myArr2[2])
+}
 
-  var cars = [4]string{"Volvo", "BMW", "Ford", "Mazda"}
-  fmt.Print(cars[1])
+func loop() {
+
+	array := [...]int{10, 20, 30, 40, 50}
+	for i := 0; i < len(array); i++ {
+		fmt.Println(i, array[i])
+	}
+
+	name := [...]string{"messi", "cr7", "neymar", "Zidane"}
+	for i := 0; i < len(name); i++ {
+		fmt.Println(name[i])
+	}
+
+	club := [...]string{"City", "Liverpool", "United", "Madrid"}
+
+	for index, value := range club {
+		fmt.Println(index, value)
+	}
 
 }

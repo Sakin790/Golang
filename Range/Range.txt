@@ -1,0 +1,4 @@
+for index, value := range collection {
+    // Code to execute for each element
+}
+
