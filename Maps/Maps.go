@@ -30,6 +30,7 @@ func footBall() {
 	} else {
 		fmt.Println("Not Exists")
 	}
+	student()
 }
 
 func practice1() {
@@ -53,4 +54,15 @@ func practice1() {
 	for key, value := range m {
 		fmt.Printf("%s ** %d\n", key, value)
 	}
+	student()
+}
+
+func student() {
+
+	studentGrade := make(map[string]int)
+
+	studentGrade["sakin"] = 12
+	studentGrade["Mahid"] = 15
+	delete(studentGrade, "Mahid")
+	fmt.Println(studentGrade)
 }

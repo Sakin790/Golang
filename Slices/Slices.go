@@ -9,9 +9,8 @@ func main() {
 	fmt.Println(nums)
 	fmt.Println(cap(nums))
 	fmt.Println(len(nums))
-
-	//I we want not nill value
-	var numbers = make([]int, 0, 5) //5 is capacity
+        // slice initialize but no value
+	var numbers = make([]int, 0, 5) // 0 length, 5 is capacity
 
 	numbers = append(numbers, 10, 20, 30, 40, 50, 55)
 
@@ -23,9 +22,6 @@ func main() {
 	fmt.Println(score)
 	fmt.Println(cap(score))
 
-
-
-	
 	var Football = make([]string, 1, 5)
 	Football = append(Football, "UFA", "PL", "EPL")
 	var Cricket = make([]string, len(Football), 5)
@@ -38,4 +34,14 @@ func main() {
 	copy(cmp, emp)
 	fmt.Println(cmp)
 
+	homeWork()
+}
+
+func homeWork() {
+	work := []string{"Cooking", "Cleaning", "Watering"}
+	fmt.Println(work)
+	fmt.Println(work[0])
+	fmt.Println(work[1])
+	fmt.Println(work[2])
+	fmt.Printf("The Length of  arrar %T\n", work)
 }

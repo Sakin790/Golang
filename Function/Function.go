@@ -12,10 +12,11 @@ package main
 import "fmt"
 
 func main() {
+
+	
 	greet()
 	result := toSum(2, 3)
 	fmt.Println(result)
-
 	r, q := multiple(5, 5)
 	fmt.Println(q, r)
 	fmt.Println("Area of rectangle:", rectangleArea(5, 3))
