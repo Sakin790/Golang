@@ -1,11 +1,18 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"os"
+)
 
 func main() {
-	for i := 1; i <= 3; i++ {
-		for j := 1; j <= 3; j++ {
-			fmt.Println("Hello")
-		}
+	const name, age = "Kim", 22
+	n, err := fmt.Fprint(os.Stdout, name, " is ", age, " years old.\n")
+
+	// The n and err return values from Fprint are
+	// those returned by the underlying io.Writer.
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Fprint: %v\n", err)
 	}
+	fmt.Print(n, " bytes written.")
 }
