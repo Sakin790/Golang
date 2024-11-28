@@ -11,7 +11,7 @@ func main() {
 
 	var nums int = 50
 	var numsToSting string = string(nums)
-	fmt.Printf("%T\n", numsToSting)
+	fmt.Printf("%T\n", numsToSting) 
 
 
-}
+} 

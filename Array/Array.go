@@ -1,5 +1,5 @@
 package main
-
+// var arrayName [size]Type
 import (
 	"fmt"
 )
