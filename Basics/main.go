@@ -1,16 +1,27 @@
-// sliceName := []datatype { value1, value2, value3,...valueN }
-
 package main
 
 import "fmt"
 
-func main() {
-	name := []string{"Leo", "Messi", "CR4", "CR5", "CR6", "CR7", "CR8", "CR9"}
-	for i := 0; i < len(name); i++ {
-		fmt.Print(" ", name[i])
-	}
+type students struct {
+	id    string
+	name  string
+	age   int
+	class string
+}
 
-	for index, value := range name {
-		fmt.Println("Index:", index, "Value:", value)
+func (pointer *students) changeGender(name string) {
+	pointer.name = name
+}
+func main() {
+
+	sakin := students{
+		id:    "001",
+		name:  "Sakin",
+		age:   23,
+		class: "10th",
 	}
+	fmt.Println(sakin.age)
+	sakin.changeGender("Mahid")
+	fmt.Println(sakin.name)
+
 }
