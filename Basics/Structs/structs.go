@@ -1,4 +1,4 @@
-package main
+package structs
 
 import (
 	"fmt"
@@ -53,9 +53,6 @@ func main() {
 	abir.changeGender("G")
 	fmt.Println(abir)
 
-
-
-	
 	type person struct {
 		firstname string
 		lastname  string
