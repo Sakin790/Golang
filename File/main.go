@@ -2,52 +2,41 @@ package main
 
 import (
 	"fmt"
-	"io"
 	"os"
 )
 
 func main() {
+	readFile()
+}
 
-	/*
-		fmt.Println("Creating File...")
-		file, err := os.Create("Example.txt")
-		if err != nil {
-			fmt.Println(err)
-			return
-		}
-		defer file.Close()
-
-		content := "Hello, world!"
-		byte, err := io.WriteString(file, content+"\n")
-		if err != nil {
-			fmt.Println(err)
-			return
-		}
-		fmt.Println(byte)
-		fmt.Printf("Type of file is %T\n", file)
-	*/
-	file, err := os.Open("Example.txt")
+func write() {
+	data := "Lets have some fun with golang"
+	err := os.WriteFile("note.txt", []byte(data), 0644)
 	if err != nil {
-		fmt.Println(err)
-		return
+		panic(err)
+	} else {
+		fmt.Println("Write file Done")
+	}
+}
+
+func create() {
+	file, err := os.Create("note.txt")
+	if err != nil {
+		panic(err)
 	}
 	defer file.Close()
-
-	//make a buffer for reading the file
-
-	buffer := make([]byte, 1024)
-	for {
-		n, err := file.Read(buffer)
-		fmt.Println(n)
-		if err == io.EOF {
-			break
-		}
-		if err != nil {
-			fmt.Println(err)
-			return
-		}
-		// Reading data from buffer
-		fmt.Println(string(buffer[:n]))
-	}
-
+	fmt.Println("File creared")
 }
+
+func readFile() {
+	data, err := os.ReadFile("note.txt")
+	if err != nil {
+		panic(err)
+	} else {
+		fmt.Println("File data is:", string(data))
+	}
+}
+
+//Folder
+
+

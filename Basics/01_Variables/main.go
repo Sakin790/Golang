@@ -2,6 +2,14 @@ package main
 
 import "fmt"
 
+func rangeFunc() {
+	var count int
+	for range 10 {
+		count++
+		fmt.Println("Range funvtion", count)
+	}
+}
+
 func main() {
 	var name string = "sakin"
 	var a string
