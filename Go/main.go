@@ -2,20 +2,63 @@ package main
 
 import (
 	"fmt"
-	"time"
+	"io/ioutil"
+	"net/http"
+	"sync"
 )
 
-func task(id int) {
-	fmt.Println("Doing task", id)
+// fetchData fetches data from a URL and sends it to results channel
+func fetchData(url string, results chan<- string, wg *sync.WaitGroup) {
+	defer wg.Done()
+	resp, err := http.Get(url)
+	if err != nil {
+		results <- fmt.Sprintf("Error fetching %s: %v", url, err)
+		return
+	}
+	defer resp.Body.Close()
+
+	body, err := ioutil.ReadAll(resp.Body)
+	if err != nil {
+		results <- fmt.Sprintf("Error reading %s: %v", url, err)
+		return
+	}
+
+	results <- fmt.Sprintf("Data from %s: %s", url, string(body[:50])) // first 50 chars
 }
 
 func main() {
-	for i := 0; i <= 10; i++ {
-		go func(id int) {
-			task(id)
-		}(i)
-		fmt.Println()
+	urls := []string{
+		"https://jsonplaceholder.typicode.com/todos/1",
+		"https://jsonplaceholder.typicode.com/todos/2",
+		"https://jsonplaceholder.typicode.com/todos/3",
+		"https://jsonplaceholder.typicode.com/todos/4",
+		"https://jsonplaceholder.typicode.com/todos/5",
+		"https://jsonplaceholder.typicode.com/todos/6",
+		"https://jsonplaceholder.typicode.com/todos/7",
+		"https://jsonplaceholder.typicode.com/todos/8",
+		"https://jsonplaceholder.typicode.com/todos/9",
+		"https://jsonplaceholder.typicode.com/todos/10",
 	}
 
-	time.Sleep(time.Second * 2)
+	var wg sync.WaitGroup
+	results := make(chan string, len(urls)) // buffered channel
+
+	for _, url := range urls {
+		wg.Add(1)
+		go fetchData(url, results, &wg)
+	}
+
+	wg.Wait()
+	close(results) // close channel when all goroutines finish
+
+	// Collect all results
+	finalData := []string{}
+	for res := range results {
+		finalData = append(finalData, res)
+	}
+
+	// Store or print final data
+	for _, data := range finalData {
+		fmt.Println(data)
+	}
 }

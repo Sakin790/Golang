@@ -13,9 +13,11 @@ import "fmt"
 
 func main() {
 
-	
 	greet()
-	result := toSum(2, 3)
+	result,err := toSum(2, 3)
+	if err != nil {
+	
+	}
 	fmt.Println(result)
 	r, q := multiple(5, 5)
 	fmt.Println(q, r)
@@ -26,8 +28,8 @@ func greet() {
 	fmt.Println("Welcome...")
 }
 
-func toSum(a, b int) int {
-	return a + b
+func toSum(a, b int) (int, error) {
+	return a + b, nil
 }
 
 //Function with Maltiple value
@@ -37,11 +39,10 @@ func multiple(a int, b int) (int, int) {
 	q := a % b
 	return r, q // return korle vaiable a hold korte hobe, jehutu 2 ta value return korche
 	// tahole amake 2 ta variable  nite hobee
-    //variable a hold na korte hole , function return type a nam diye dite hoi
+	//variable a hold na korte hole , function return type a nam diye dite hoi
 }
 
-
 func rectangleArea(length, width int) (area int) {
-    area = length * width
-    return // The named return 'area' is automatically returned
+	area = length * width
+	return // The named return 'area' is automatically returned
 }

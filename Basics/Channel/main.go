@@ -4,16 +4,27 @@ import (
 	"fmt"
 	"time"
 )
-func processNumber(numberChan chan int,) {
-	fmt.Println("Processing number", <-numberChan)
+
+func baker(cakes chan string) {
+
+	for i := 0; i < 5; i++ {
+
+		cake := fmt.Sprintf("Cake#%d", i)
+		fmt.Println("Baker produced:", cake)
+		cakes <- cake
+		time.Sleep(time.Second)
+	}
+	close(cakes)
+
 }
 
+func customer(cakes chan string) {
+	for cake := range cakes {
+		fmt.Println("Customer bought:", cake)
+		time.Sleep(2 * time.Second)
+	}
+}
 
 func main() {
-	numberChan := make(chan int) //creating channel
-	go processNumber(numberChan)
-	numberChan <- 5 //passing data to channel
-	time.Sleep(time.Second*2) //hold main function for 2 second
+
 }
-
-
