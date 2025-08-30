@@ -21,6 +21,8 @@ func printString(names []string) {
 
 }
 
+
+
 // generic function
 func generic[T int | string | bool](item []T) {
 

@@ -6,7 +6,35 @@ import (
 )
 
 func main() {
-	encodingJson()
+
+	score := []int{100, 200, 300}
+	player := []string{"Messi", "Ethan", "Wrizs"}
+	generic(player)
+	generic(score)
+}
+
+func generic[T int | string | bool](item []T) {
+
+	for _, value := range item {
+		fmt.Println(value)
+	}
+}
+
+// printINT([]int{10, 20, 30})
+func printINT(nums []int) {
+	for _, value := range nums {
+		fmt.Println(value)
+
+	}
+
+}
+
+// printSTRING([]string{"Sakin", "mahid"})
+func printSTRING(name []string) {
+	for _, value := range name {
+		fmt.Println(value)
+
+	}
 }
 
 func encodingJson() {
@@ -75,7 +103,7 @@ func arrayFunc() {
 }
 
 func rangeFunction() {
-	for range 1000000 {
+	for range 1000 {
 		fmt.Println("Hello Sakin")
 	}
 }
