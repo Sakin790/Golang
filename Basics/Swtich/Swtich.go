@@ -3,7 +3,6 @@ package main
 import "fmt"
 
 func main() {
-
 	var fuirt string
 	fmt.Print("Enter your Fuirt name: ")
 	fmt.Scan(&fuirt)

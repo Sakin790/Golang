@@ -6,7 +6,7 @@ func rangeFunc() {
 	var count int
 	for range 10 {
 		count++
-		fmt.Println("Range funvtion", count)
+		fmt.Println("Range function", count)
 	}
 }
 
@@ -22,6 +22,5 @@ func main() {
 
 	age := 23
 	fmt.Println(age)
-	fmt.Sprintf("%[2]d %[1]d\n", 11, 22)
-
+	rangeFunc()
 }
