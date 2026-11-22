@@ -21,7 +21,20 @@ func main() {
 		c.JSON(http.StatusOK, gin.H{"matched": "root", "path": c.Request.URL.Path})
 	})
 
+  router.GET("/api/v1/users", func(c *gin.Context) {
+		c.Header("X-Gin-Handler", "users")
+		c.JSON(http.StatusOK, gin.H{"matched": "users", "path": c.Request.URL.Path})
+	})
 
+  router.GET("/api/v1/items/:id", func(c *gin.Context) {
+		c.Header("X-Gin-Handler", "item-detail")
+		c.JSON(http.StatusOK, gin.H{"matched": "item-detail", "id": c.Param("id")})
+	})
+
+  router.Any("/legacy/*filepath", func(c *gin.Context) {
+		c.Header("X-Gin-Handler", "legacy-wildcard")
+		c.JSON(http.StatusOK, gin.H{"matched": "legacy-wildcard", "path": c.Request.URL.Path})
+	})
   
 
   srv := &http.Server{
